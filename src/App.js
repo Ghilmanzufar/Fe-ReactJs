@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import DataMahasiswaPage from "./pages/DataMahasiswaPage";
+import TambahDataPage from "./pages/TambahDataPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+    <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/data_mhs" element={<DataMahasiswaPage />} />
+        <Route path="/tambah_data" element={<TambahDataPage />} />
+        </Routes>
+    </BrowserRouter>
+    );
 }
 
 export default App;
