@@ -41,15 +41,10 @@ const DataMahasiswaPage = () => {
         <Notification message={msg} isError={isError} />
       </div>
       <div className="mt-5 container mx-auto">
-        <h1 className="text-3xl font-semibold mb-3 text-center">
-          Data Mahasiswa
-        </h1>
+        <h1 className="text-3xl font-semibold mb-3 text-center">Data Mahasiswa</h1>
 
         <div className="mt-4 mb-4">
-          <a
-            className="bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg"
-            href="/tambah_data"
-          >
+          <a className="bg-green-500 hover:bg-green-700 text-white p-2 rounded-lg" href="/tambah_data">
             Tambah Data
           </a>
         </div>
@@ -72,10 +67,22 @@ const DataMahasiswaPage = () => {
                   <td className="border p-2">{item.nama}</td>
                   <td className="border p-2">{item.kelas}</td>
                   <td className="border p-2">
-                      <button onClick={() => deleteMhs(item.id)} // Memanggil fungsi deleteMhs
-                              className="bg-red-500 hover:bg-red-700 text-white p-2 rounded">
-                              Hapus
+                    <div className="grid grid-cols-2 text-center gap-2 px-2">
+                      <a className="bg-blue-500 hover-bg-blue-700 text-white p-2 rounded-lg" href={`/edit_data/${item.id}`}>
+                        Edit
+                      </a>
+                      <button
+                        onClick={() => {
+                          if (window.confirm("Apakah Anda yakin ingin menghapus Mahasiswa ini?")) {
+                            deleteMhs(item.id);
+                          }
+                        }}
+                        className="bg-red-500 hover:bg-red-700 text-white p-2 rounded-lg"
+                        href="/"
+                      >
+                        Hapus
                       </button>
+                    </div>
                   </td>
                 </tr>
               ))
